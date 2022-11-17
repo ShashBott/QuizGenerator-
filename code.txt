@@ -1,1 +1,109 @@
+import java.util.Scanner;
+import java.util.Random;
 
+public class QuizMaker{
+
+    public static void main(String[] args){
+
+        // Declare constants and variables that will be used throughout
+        // your program
+        int questions = 3;    //this is the variable which is set as the number
+        //of questions in the quiz
+        int minOp = 1;        //this is the variable which is set as the
+        //minimum operand in the quiz
+        int maxOp = 10;        //this is the variable which is set as the
+        //maximum operand in the quiz
+        int go = 0;            //this is the variable that handles menu
+        //entries as it changes the menu entry screens do too
+        String ops = "+";    //this is the variable that dictates what
+        //operation is performed in the quiz
+        int ran1 = 0;        //this variable serves as the first random
+        //number in the quiz it can be any number between the min and
+        //max operands inclusive
+        int ran2 = 0;        //this variable serves as the second random
+        //number in the quiz it can be any number between the min and
+        //max operands inclusive unless the operation is division in which
+        //case it can never be zero
+        int ans = 0;        //this variable is the answer calculated by the
+        //program this is never a decimal
+        double ans2 = 0;        //this variable is the answer calculated by the
+        //program specifically for division
+        int useans = 0;        //this variable is the answer the user gives
+        double useans2 = 0;    //this variable is the answer the user gives
+        //specific to the division problem
+        int correct = 0;    //this variable that counts the number of correct
+        //answers the user gives
+        int theruns = 0;    //this variable counts the number of questions
+        //used to show how many of the questions where answered correctly
+        // out of the total number
+        
+
+
+        // Declare a Scanner attached to System.in. This should be the only
+        // Scanner created in the entire program.
+        Scanner scnr = new Scanner(System.in);
+
+        // Declare a Random object, used for generating random numbers
+        Random rangen = new Random();
+
+        // in the quiz. This should be the only Random created in the entire
+        // program.
+        //TODO (code will be similar to how the Scanner was created)
+
+
+
+        // DISPLAY WELCOME MESSAGE
+        System.out.println("Welcome to the Quiz Maker 3000!");
+        // MAIN PROGRAM LOOP
+        while(go==0){
+
+            // PRINT QUIZ SETTINGS
+            System.out.println("");
+            System.out.println("Quiz Settings:");
+            System.out.println("    Number of Questions: " + questions);
+            System.out.println("    Minimum Operand: " + minOp);
+            System.out.println("    Maximim Operand: " + maxOp);
+            System.out.println("    Operator: " + ops);
+            System.out.println("");
+
+            //DISPLAY MENU
+            System.out.println("Main Menu");
+            System.out.println("1) Set Number of Questions");
+            System.out.println("2) Set Minimum Operand Value");
+            System.out.println("3) Set Maximum Operand Value");
+            System.out.println("4) Set Operator");
+            System.out.println("5) Take Quiz");
+            System.out.println("6) Quit");
+            System.out.println("What would you like to do?");
+            //this is the error check for the menu
+            do{
+                while(!scnr.hasNextInt()){
+                    scnr.next();
+                    System.out.println("Error: Invalid command. ");
+                }
+                go=scnr.nextInt();
+                if(go<1||go>6){
+                    System.out.println("Error: Invalid command. ");
+                }
+            }while(go<1 || go>6);
+            //PROCESS USER'S MENU CHOICE
+            // USER CHOSE TO SET NUMBER OF QUESTIONS
+            if(go==1){
+                System.out.println("Enter a length for the quiz.");
+                if(questions>1){
+                    go--;
+                }
+                //this do loop checks for input errors
+                do{
+                    while(!scnr.hasNextInt()){
+                        scnr.next();                
+                        System.out.println("Error: Number of questions " +
+                                "must be a positive integer. ");
+                    }
+                    questions=scnr.nextInt();
+                    if(questions<1){
+                        System.out.println("Error: Number of questions " +
+                                "must be a positive integer. ");
+                    }
+                }while(questions<1);
+            }
