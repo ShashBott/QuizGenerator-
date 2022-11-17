@@ -1,1 +1,58 @@
+//the following is the code to handle division questions
+                    if(ops.equals("/")){
+                        ran1=rangen.nextInt(maxOp+1-minOp) + minOp;
+                        ran2=rangen.nextInt(maxOp+1-minOp) + minOp+1;
+                        System.out.println(ran1 + " / " + ran2);
 
+                        ans2 = (ran1*+1.00) / (ran2*1.00);
+                        do{
+                            while(!scnr.hasNextDouble()){
+                                scnr.next();
+                                System.out.println("Error: Invalid answer.");
+
+                            }
+                        }while(!scnr.hasNextDouble());
+                        useans2=scnr.nextDouble();
+                        if(useans2>(ans2-.01) && useans2<(ans2+.01)){
+                            System.out.println("Correct!");
+                            correct++;
+                        }
+                        else{
+                            System.out.println("Incorrect");
+                        }
+                    }
+                    //the following is the code to handle mod questions
+                    if(ops.equals("%")){
+                        System.out.println(ran1 + " % " + ran2);
+
+                        ans = ran1 % ran2;
+                        do{
+                            while(!scnr.hasNextInt()){
+                                scnr.next();
+                                System.out.println("Error: Invalid answer.");
+
+                            }
+                        }while(!scnr.hasNextInt());
+                        useans=scnr.nextInt();
+                        if(useans==ans){
+                            System.out.println("Correct!");
+                            correct++;
+                        }
+                        else{
+                            System.out.println("Incorrect");
+                        }
+                    }
+                    theruns++;
+                }
+                System.out.println("Quiz Complete! Your Score: " + correct +
+                        " out of " + theruns);
+                go=0;
+            }
+            // USER CHOSE TO QUIT PROGRAM
+            if(go==6){
+                System.out.println("Goodbye!");
+                System.exit(6);
+            }
+        }
+    }
+}
